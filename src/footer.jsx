@@ -6,7 +6,7 @@ export default function Footer() {
     <footer style={styles.footer}>
       <div style={styles.container}>
 
-        {/* Column 1 */}
+       
         <div style={styles.column}>
           <h3 style={styles.title}>My Website</h3>
           <p style={styles.text}>
@@ -15,7 +15,6 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Column 2 */}
         <div style={styles.column}>
           <h3 style={styles.subtitle}>Quick Links</h3>
           <ul style={styles.list}>
@@ -26,7 +25,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Column 3 */}
+       
         <div style={styles.column}>
           <h3 style={styles.subtitle}>Contact Us</h3>
           <p style={styles.text}>Email: support@mywebsite.com</p>
