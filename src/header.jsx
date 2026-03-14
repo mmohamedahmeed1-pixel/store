@@ -20,7 +20,7 @@ export default function HeroSection() {
 
       <Grid container spacing={5} alignItems="center">
 
-        {/* Left Side */}
+     
         <Grid item xs={12} md={6}>
 
           <Typography
@@ -65,7 +65,7 @@ export default function HeroSection() {
 
         </Grid>
 
-        {/* Right Side */}
+      
         <Grid item xs={12} md={6}>
 
           <Box
