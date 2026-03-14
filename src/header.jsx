@@ -48,7 +48,7 @@ export default function HeroSection() {
           <Button
             variant="contained"
             size="large"
-            onClick={() => navigate("/products")}
+            onClick={() => navigate("/proudects")}
             sx={{
               background: "#ff9800",
               fontSize: "18px",
