@@ -15,7 +15,7 @@ export default function Home() {
     { id: 10, name: "Monitor", price: 200, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf" },
   ];
 
-  const [counts, setCounts] = useState(Array(products.length).fill(1));
+  const [counts, setCounts] = useState(Array(products.length).fill(0));
 
   const increase = (index) => {
     setCounts(prev => {
@@ -28,7 +28,7 @@ export default function Home() {
   const decrease = (index) => {
     setCounts(prev => {
       const newCounts = [...prev];
-      if (newCounts[index] > 1) {
+      if (newCounts[index] > 0) {
         newCounts[index]--;
       }
       return newCounts;
@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
-      {/* Products Grid */}
+     
       <Box
         sx={{
           display: "flex",
