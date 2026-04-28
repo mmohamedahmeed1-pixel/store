@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Toolbar,
@@ -6,57 +6,106 @@ import {
   Button,
   IconButton,
   Badge,
-  Box
+  Box,
+  Menu,
+  MenuItem
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import { Link, useLocation } from "react-router-dom";
 
-export default function Navbar({ cartCount, toggleDarkMode }) {
+export default function Navbar({ cartCount, darkMode, setDarkMode }) {
+
+  const location = useLocation();
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const pages = [
+    { name: "Home", path: "/" },
+    { name: "Products", path: "/proudects" },
+    { name: "Service", path: "/service" },
+    { name: "Help", path: "/help" }
+  ];
+
+  const handleOpen = (e) => setAnchorEl(e.currentTarget);
+  const handleClose = () => setAnchorEl(null);
+
   return (
-    <AppBar position="sticky" sx={{ background: "#0f172a" }}>
+    <AppBar position="sticky" sx={{ background: darkMode ? "#111" : "#0f172a" }}>
       <Toolbar>
 
+        {/* Logo */}
         <Typography
           variant="h6"
-          sx={{
-            flexGrow: 1,
-            fontWeight: "bold",
-            letterSpacing: "1px"
-          }}
+          sx={{ flexGrow: 1, fontWeight: "bold", letterSpacing: "1px" }}
         >
-          mohamed Store
+          GameCheck
         </Typography>
 
-        <Box>
+        {/* Desktop Links */}
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          {pages.map((page) => (
+            <Button
+              key={page.name}
+              component={Link}
+              to={page.path}
+              sx={{
+                color: location.pathname === page.path ? "#4fc3f7" : "#fff",
+                fontWeight: "bold",
+                "&:hover": {
+                  color: "#4fc3f7"
+                }
+              }}
+            >
+              {page.name}
+            </Button>
+          ))}
+        </Box>
 
-          <Button color="inherit" component={Link} to="/">
-            Home
-          </Button>
+        {/* Icons */}
+        <Box sx={{ display: "flex", alignItems: "center", gap: "10px" }}>
 
-          <Button color="inherit" component={Link} to="/proudects">
-            Products
-          </Button>
+          {/* Dark Mode */}
+          <IconButton onClick={() => setDarkMode(!darkMode)} color="inherit">
+            {darkMode ? <LightModeIcon /> : <DarkModeIcon />}
+          </IconButton>
 
-          <Button color="inherit" component={Link} to="/service">
-            Service
-          </Button>
+          {/* Cart */}
+          <IconButton color="inherit">
+            <Badge badgeContent={cartCount} color="error">
+              <ShoppingCartIcon />
+            </Badge>
+          </IconButton>
 
-          <Button color="inherit" component={Link} to="/help">
-            Help
-          </Button>
+          {/* Mobile Menu */}
+          <IconButton
+            color="inherit"
+            sx={{ display: { xs: "block", md: "none" } }}
+            onClick={handleOpen}
+          >
+            <MenuIcon />
+          </IconButton>
 
         </Box>
 
-        <IconButton color="inherit" sx={{ ml: 2 }}>
-          <Badge badgeContent={cartCount} color="error">
-            <ShoppingCartIcon />
-          </Badge>
-        </IconButton>
-
-        <IconButton color="inherit" onClick={toggleDarkMode}>
-          <DarkModeIcon />
-        </IconButton>
+        {/* Mobile Dropdown */}
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          {pages.map((page) => (
+            <MenuItem
+              key={page.name}
+              component={Link}
+              to={page.path}
+              onClick={handleClose}
+            >
+              {page.name}
+            </MenuItem>
+          ))}
+        </Menu>
 
       </Toolbar>
     </AppBar>

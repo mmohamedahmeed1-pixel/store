@@ -1,71 +1,110 @@
-import React, { useState } from "react";
-import { Box, Card, CardContent, CardMedia, Typography, Button } from "@mui/material";
+import React from "react";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export default function Home() {
-  const products = [
-    { id: 1, name: "Headphones", price: 50, img: "https://images.unsplash.com/photo-1585386959984-a41552231693" },
-    { id: 2, name: "Smart Watch", price: 80, img: "https://images.unsplash.com/photo-1517433456452-f9633a875f6f" },
-    { id: 3, name: "Laptop", price: 900, img: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8" },
-    { id: 4, name: "Camera", price: 400, img: "https://images.unsplash.com/photo-1519183071298-a2962be90b8e" },
-    { id: 5, name: "Keyboard", price: 40, img: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f" },
-    { id: 6, name: "Mouse", price: 25, img: "https://images.unsplash.com/photo-1527814050087-3793815479db" },
-    { id: 7, name: "Phone", price: 600, img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" },
-    { id: 8, name: "Tablet", price: 300, img: "https://images.unsplash.com/photo-1542751371-adc38448a05e" },
-    { id: 9, name: "Speaker", price: 70, img: "https://images.unsplash.com/photo-1589003077984-894e133dabab" },
-    { id: 10, name: "Monitor", price: 200, img: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf" },
+export default function Games() {
+  const navigate = useNavigate();
+
+  const games = [
+    { name: "GTA V", img: "https://cdn.akamai.steamstatic.com/steam/apps/271590/header.jpg" },
+    { name: "Cyberpunk 2077", img: "https://cdn.akamai.steamstatic.com/steam/apps/1091500/header.jpg" },
+    { name: "Red Dead Redemption 2", img: "https://cdn.akamai.steamstatic.com/steam/apps/1174180/header.jpg" },
+    { name: "Elden Ring", img: "https://cdn.akamai.steamstatic.com/steam/apps/1245620/header.jpg" },
+    { name: "The Witcher 3", img: "https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg" },
+    { name: "Resident Evil 4", img: "https://cdn.akamai.steamstatic.com/steam/apps/2050650/header.jpg" },
+    { name: "FIFA 23", img: "https://cdn.akamai.steamstatic.com/steam/apps/1811260/header.jpg" },
+    { name: "Call of Duty MW2", img: "https://cdn.akamai.steamstatic.com/steam/apps/1938090/header.jpg" },
+    { name: "Battlefield 2042", img: "https://cdn.akamai.steamstatic.com/steam/apps/1517290/header.jpg" },
+    { name: "PUBG", img: "https://cdn.akamai.steamstatic.com/steam/apps/578080/header.jpg" },
+
+    { name: "Fortnite", img: "https://cdn2.unrealengine.com/egs-fortnite-chapter4season4-carousel-desktop-1920x1080-4f1cba81c6dc.jpg" },
+    { name: "God of War", img: "https://cdn.akamai.steamstatic.com/steam/apps/1593500/header.jpg" },
+    { name: "Horizon Zero Dawn", img: "https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg" },
+    { name: "Spider-Man Remastered", img: "https://cdn.akamai.steamstatic.com/steam/apps/1817070/header.jpg" },
+    { name: "Days Gone", img: "https://cdn.akamai.steamstatic.com/steam/apps/1259420/header.jpg" },
+    { name: "Far Cry 6", img: "https://cdn.akamai.steamstatic.com/steam/apps/2369390/header.jpg" },
+    { name: "Watch Dogs 2", img: "https://cdn.akamai.steamstatic.com/steam/apps/447040/header.jpg" },
+    { name: "Need for Speed Heat", img: "https://cdn.akamai.steamstatic.com/steam/apps/1222680/header.jpg" },
+    { name: "Forza Horizon 5", img: "https://cdn.akamai.steamstatic.com/steam/apps/1551360/header.jpg" },
+    { name: "Dying Light 2", img: "https://cdn.akamai.steamstatic.com/steam/apps/534380/header.jpg" },
+
+    { name: "Minecraft", img: "https://cdn.akamai.steamstatic.com/steam/apps/1789480/header.jpg" },
+    { name: "Among Us", img: "https://cdn.akamai.steamstatic.com/steam/apps/945360/header.jpg" },
+    { name: "Fall Guys", img: "https://cdn.akamai.steamstatic.com/steam/apps/1097150/header.jpg" },
+    { name: "Valorant", img: "https://images.contentstack.io/v3/assets/bltb6530b271fddd0b1/bltad2a9a0d7d3b0e13/valorant.jpg" },
+    { name: "CS2", img: "https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg" },
+    { name: "Apex Legends", img: "https://cdn.akamai.steamstatic.com/steam/apps/1172470/header.jpg" },
+    { name: "Rainbow Six Siege", img: "https://cdn.akamai.steamstatic.com/steam/apps/359550/header.jpg" },
+    { name: "Overwatch 2", img: "https://cdn.akamai.steamstatic.com/steam/apps/2357570/header.jpg" },
+    { name: "ARK Survival", img: "https://cdn.akamai.steamstatic.com/steam/apps/346110/header.jpg" },
+    { name: "Rust", img: "https://cdn.akamai.steamstatic.com/steam/apps/252490/header.jpg" }
   ];
 
-  const [counts, setCounts] = useState(Array(products.length).fill(1));
-
-  const increase = (index) => {
-    setCounts(prev => {
-      const newCounts = [...prev];
-      newCounts[index]++;
-      return newCounts;
-    });
-  };
-
-  const decrease = (index) => {
-    setCounts(prev => {
-      const newCounts = [...prev];
-      if (newCounts[index] > 1) {
-        newCounts[index]--;
-      }
-      return newCounts;
-    });
-  };
-
   return (
-    <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", padding: "20px" }}>
-      {/* Products Grid */}
+    <Box sx={{ padding: "40px" }}>
+      <Typography
+        variant="h3"
+        sx={{
+          mb: 4,
+          textAlign: "center",
+          fontWeight: "bold"
+        }}
+      >
+        Choose Your Game 🎮
+      </Typography>
+
       <Box
         sx={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
-          gap: "30px",
+          gap: 4
         }}
       >
-        {products.map((product, index) => (
-          <Card key={product.id} sx={{ width: 250 }}>
-            <CardMedia component="img" height="160" image={product.img} />
+        {games.map((game, index) => (
+          <Card
+            key={index}
+            sx={{
+              width: 260,
+              borderRadius: "15px",
+              boxShadow: "0 6px 20px rgba(0,0,0,0.2)",
+              transition: "0.3s",
+              "&:hover": {
+                transform: "scale(1.05)"
+              }
+            }}
+          >
+            <CardMedia
+              component="img"
+              height="150"
+              image={game.img}
+            />
+
             <CardContent>
-              <Typography variant="h6">{product.name}</Typography>
-              <Typography color="text.secondary">Price: ${product.price}</Typography>
-              <Typography>Quantity: {counts[index]}</Typography>
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                {game.name}
+              </Typography>
+
               <Button
                 variant="contained"
-                onClick={() => increase(index)}
-                sx={{ backgroundColor: "red", marginRight: 1, "&:hover": { backgroundColor: "blue" } }}
+                fullWidth
+                sx={{
+                  mt: 2,
+                  background: "#0f172a",
+                  "&:hover": { background: "#1e293b" }
+                }}
+                onClick={() =>
+                  navigate(`/check/${game.name.replace(/\s+/g, "").toLowerCase()}`)
+                }
               >
-                +
-              </Button>
-              <Button
-                variant="contained"
-                onClick={() => decrease(index)}
-                sx={{ backgroundColor: "red", "&:hover": { backgroundColor: "blue" } }}
-              >
-                -
+                Check now
               </Button>
             </CardContent>
           </Card>

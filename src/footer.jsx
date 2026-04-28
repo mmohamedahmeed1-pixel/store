@@ -1,103 +1,48 @@
 import React from "react";
+import { Box, Typography, IconButton } from "@mui/material";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    
-    <footer style={styles.footer}>
-      <div style={styles.container}>
+    <Box
+      sx={{
+        background: "#0f172a",
+        color: "white",
+        mt: 5,
+        pt: 4,
+        pb: 3,
+        textAlign: "center"
+      }}
+    >
+      {/* Logo or Title */}
+      <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
+        GameCheck
+      </Typography>
 
-        {/* Column 1 */}
-        <div style={styles.column}>
-          <h3 style={styles.title}>My Website</h3>
-          <p style={styles.text}>
-            High quality products and fast delivery.  
-            Your satisfaction is our priority.
-          </p>
-        </div>
+      <Typography variant="body2" sx={{ opacity: 0.7, mb: 3 }}>
+        Check if your PC can run any game instantly!
+      </Typography>
 
-        {/* Column 2 */}
-        <div style={styles.column}>
-          <h3 style={styles.subtitle}>Quick Links</h3>
-          <ul style={styles.list}>
-            <li style={styles.listItem}>Home</li>
-            <li style={styles.listItem}>Products</li>
-            <li style={styles.listItem}>About</li>
-            <li style={styles.listItem}>Contact</li>
-          </ul>
-        </div>
+      {/* Social Icons */}
+      <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mb: 3 }}>
+        <IconButton sx={{ color: "white" }}>
+          <FaFacebook />
+        </IconButton>
+        <IconButton sx={{ color: "white" }}>
+          <FaInstagram />
+        </IconButton>
+        <IconButton sx={{ color: "white" }}>
+          <FaTwitter />
+        </IconButton>
+        <IconButton sx={{ color: "white" }}>
+          <FaYoutube />
+        </IconButton>
+      </Box>
 
-        {/* Column 3 */}
-        <div style={styles.column}>
-          <h3 style={styles.subtitle}>Contact Us</h3>
-          <p style={styles.text}>Email: support@mywebsite.com</p>
-          <p style={styles.text}>Phone: +1 234 567 890</p>
-        </div>
-      </div>
-
-      <p style={styles.copy}>
-        © 2026 My Website — All Rights Reserved.
-      </p>
-    </footer>
+      {/* Bottom Text */}
+      <Typography variant="body2" sx={{ opacity: 0.5 }}>
+        © {new Date().getFullYear()} GameCheck. All Rights Reserved.
+      </Typography>
+    </Box>
   );
 }
-
-const styles = {
-  footer: {
-    backgroundColor: "#222",
-    color: "#fff",
-    padding: "40px 20px",
-    marginTop: "50px"
-  },
-
-  container: {
-    display: "flex",
-    justifyContent: "space-between",
-    flexWrap: "wrap",
-    gap: "30px",
-  },
-
-  column: {
-    width: "250px",
-    minWidth: "200px",
-  },
-
-  title: {
-    fontSize: "22px",
-    fontWeight: "bold",
-    marginBottom: "10px",
-  },
-
-  subtitle: {
-    fontSize: "18px",
-    fontWeight: "bold",
-    marginBottom: "15px",
-  },
-
-  text: {
-    fontSize: "14px",
-    lineHeight: "1.6",
-    opacity: 0.8,
-    marginBottom: "5px",
-  },
-
-  list: {
-    listStyle: "none",
-    padding: 0,
-    margin: 0,
-  },
-
-  listItem: {
-    marginBottom: "8px",
-    cursor: "pointer",
-    opacity: 0.8,
-    transition: "0.3s",
-  },
-
-  copy: {
-    textAlign: "center",
-    marginTop: "30px",
-    fontSize: "13px",
-    opacity: 0.6,
-  },
-};
-

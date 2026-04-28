@@ -13,7 +13,7 @@ export default function HeroSection() {
         display: "flex",
         alignItems: "center",
         px: { xs: 4, md: 10 },
-        background: "linear-gradient(to right,#0f2027,#203a43,#2c5364)",
+        background: "linear-gradient(to right,#0f0c29,#302b63,#24243e)",
         color: "white"
       }}
     >
@@ -28,10 +28,11 @@ export default function HeroSection() {
             sx={{
               fontWeight: "bold",
               mb: 3,
-              fontSize: { xs: "40px", md: "60px" }
+              fontSize: { xs: "40px", md: "58px" }
             }}
           >
-            Best Electronics Store
+            Can Your PC  
+            <span style={{ color: "#4fc3f7" }}> Run This Game?</span>
           </Typography>
 
           <Typography
@@ -41,26 +42,28 @@ export default function HeroSection() {
               opacity: 0.8
             }}
           >
-            Discover the latest laptops, smartphones and accessories
-            with the best prices in the market.
+            ادخل مواصفات جهازك وتأكد إذا كانت لعبتك المفضلة هتشتغل  
+            بدون لاج ولا لا… بشكل سريع ودقيق.
           </Typography>
 
           <Button
             variant="contained"
             size="large"
-            onClick={() => navigate("/products")}
+            onClick={() => navigate("/proudects")}
             sx={{
-              background: "#ff9800",
+              background: "#4fc3f7",
               fontSize: "18px",
               px: 5,
               py: 1.5,
               borderRadius: "10px",
+              color: "#000",
+              fontWeight: "bold",
               "&:hover": {
-                background: "#fb8c00"
+                background: "#29b6f6"
               }
             }}
           >
-            Shop Now
+            ابدأ الفحص الآن
           </Button>
 
         </Grid>
@@ -68,15 +71,16 @@ export default function HeroSection() {
         {/* Right Side */}
         <Grid item xs={12} md={6}>
 
-          <Box
-            component="img"
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
-            sx={{
-              width: "100%",
-              borderRadius: "20px",
-              boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
-            }}
-          />
+<Box
+  component="img"
+  src="https://images.unsplash.com/photo-1511512578047-dfb367046420"
+  sx={{
+    width: "80%",
+    borderRadius: "20px",
+    boxShadow: "0 20px 40px rgba(0,0,0,0.5)"
+  }}
+/>
+
 
         </Grid>
 
